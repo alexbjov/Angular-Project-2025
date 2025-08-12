@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px/1.2 Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2em;
+  min-height: 100vh;
+}
+
+body > * {
+  flex: 1 0 400px;
+}
