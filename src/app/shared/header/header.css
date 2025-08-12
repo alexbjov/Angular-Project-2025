@@ -1,0 +1,19 @@
+ul, h1 {
+  background-color: rgb(159, 144, 199);
+  display: block;
+  text-align: center;
+  padding: 0.5em 0.5em;
+}
+
+li {
+  background-color: rgb(42, 70, 79);
+  text-decoration: none;
+  color: azure;
+  margin: 0.5em 1em;
+  border-radius: 4px;
+}
+
+li:hover {
+  background-color: aliceblue;
+  color: blueviolet;
+}
