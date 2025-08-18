@@ -9,5 +9,14 @@ import { Comment } from "../../../models/comment.model";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CommentItem {
-  comment!: Comment;
+  comment: Comment = {
+    id: '83940fhdks7390',
+    author: 'Comment Author',
+    title: 'Comment Title',
+    description: 'Comment Description',
+    likes: 20,
+    dislikes: 3,
+    bookId: 'cdjel382947',
+    ownerId: 'john@gmail.com'
+  };
 }
