@@ -1,14 +1,14 @@
 <p>Login Form here</p>
-<form class="login">
+<form class="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <fieldset>
     <h2>Login Form</h2>
 
     <p>
       <label for="email"><span>Email:</span></label>
-      <input type="email" name="email" id="email" placeholder="john@gmail.com"
-          [(ngModel)]="email" (blur)="validateEmail()">
+      <input [class.input-error]="isEmailValid" type="email" id="email"
+          placeholder="john.doe@gmail.com" formControlName="email">
     </p>
-    @if (emailError) {
+    @if (isEmailValid) {
     <p class="error">
       {{ emailErrorMessage }}
     </p>
@@ -16,19 +16,18 @@
 
     <p>
       <label for="password"><span>Password:</span></label>
-      <input type="password" name="password" id="password"
-          placeholder="********" [(ngModel)]="password"
-          (blur)="validatePassword()">
+      <input [class.input-error]="isPasswordValid" type="password" id="password"
+          placeholder="********" formControlName="password">
     </p>
-    @if (passwordError) {
+    @if (isPasswordValid) {
     <p class="error">
       {{ passwordErrorMessage }}
     </p>
     }
 
-    <button [disabled]="!isFormValid()">Login</button>
+    <button [disabled]="loginForm.invalid">Login</button>
 
-    <p>
+    <p class="text-center">
       Don't have an account?
       <a routerLink="/register">Register</a>
     </p>
