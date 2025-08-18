@@ -1,57 +1,179 @@
-import { Component, inject } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { AfterViewInit, Component, inject } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from "@angular/forms";
 import { Router, RouterLink } from "@angular/router";
 import { AuthService } from "../../../services/auth.service";
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule, RouterLink],
+  imports: [ReactiveFormsModule, FormsModule, RouterLink],
   templateUrl: './register.html',
   styleUrl: './register.css'
 })
-export class Register {
+export class Register implements AfterViewInit {
   private authService = inject(AuthService);
   private router = inject(Router);
+  private formBuilder = inject(FormBuilder);
 
-  username: string = '';
-  email: string = '';
-  phone: string = '';
-  password: string = '';
-  rePassword: string = '';
+  registerForm: FormGroup;
 
-  usernameError: boolean = false;
-  emailError: boolean = false;
-  phoneError: boolean = false;
-  passwordError: boolean = false;
-  rePasswordError: boolean = false;
-
-  usernameErrorMessage: string = 'Username Error';
-  emailErrorMessage: string = 'Email Error';
-  phoneErrorMessage: string = 'Phone Error';
-  passwordErrorMessage: string = 'Password Error';
-  rePasswordErrorMessage: string = 'RePassword Error';
-
-  validateUsername() {
-    return true;
+  constructor() {
+    this.registerForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.pattern(/^.{8,}$/), Validators.pattern(/[a-zA-Z][a-zA-Z0-9._-]*[a-zA-Z]@[a-z]{2,}\.[a-z]{2,}$/)]],
+      phone: [''],
+      passwords: this.formBuilder.group({
+        password: ['', [Validators.required, Validators.minLength(6), Validators.pattern(/^[a-zA-Z0-9]+$/)]],
+        rePassword: ['', Validators.required]
+      }, { validators: this.passwordMatchValidator })
+    })
   }
 
-  validateEmail() {
-    return true;
+  ngAfterViewInit(): void {
+    console.dir(this.registerForm);
   }
 
-  validatePhone() {
-    return true;
+  get username(): AbstractControl<any, any> | null {
+    return this.registerForm.get('username');
   }
 
-  validatePassword() {
-    return true;
+  get email(): AbstractControl<any, any> | null {
+    return this.registerForm.get('email');
   }
 
-  validateRePassword() {
-    return true;
+  get phone(): AbstractControl<any, any> | null {
+    return this.registerForm.get('phone');
   }
 
-  isFormValid() {
-    return true;
+  get passwords(): FormGroup<any> {
+    return this.registerForm.get('passwords') as FormGroup;
+  }
+
+  get password(): AbstractControl<any, any> | null {
+    return this.passwords.get('password');
+  }
+
+  get rePassword(): AbstractControl<any, any> | null {
+    return this.passwords.get('rePassword');
+  }
+
+  get isUsernameValid(): boolean {
+    return this.username?.invalid && (this.username?.dirty || this.username?.touched) || false;
+  }
+
+  get isEmailValid(): boolean {
+    return this.email?.invalid && (this.email?.dirty || this.email?.touched) || false;
+  }
+
+  get isPasswordsValid(): boolean {
+    return this.passwords?.invalid && (this.passwords?.dirty || this.passwords?.touched) || false;
+  }
+
+  get usernameErrorMessage(): string {
+    if (this.username?.errors?.['required']) {
+      return 'Username is required!';
+    }
+
+    if (this.username?.errors?.['minlength']) {
+      return 'Username should have at least 6 characters!';
+    }
+
+    return '';
+  }
+
+  get emailErrorMessage(): string {
+    if (this.email?.errors?.['required']) {
+      return 'Email is required!';
+    }
+
+    if (this.email?.errors?.['pattern']) {
+      return 'Email is not valid!';
+    }
+
+    return '';
+  }
+
+  get passwordErrorMessage(): string {
+    if (this.password?.errors?.['required']) {
+      return 'Password is required!';
+    }
+
+    if (this.password?.errors?.['minlength']) {
+      return 'Password must be at least 8 characters!';
+    }
+
+    if (this.password?.errors?.['pattern']) {
+      return 'Password is not valid!';
+    }
+
+    if (this.password?.errors?.['passwordMismatch']) {
+      return 'Passwords do not match!';
+    }
+
+    return '';
+  }
+
+  get rePasswordErrorMessage(): string {
+    if (this.password?.errors?.['required']) {
+      return 'Password is required!';
+    }
+
+    if (this.password?.errors?.['minlength']) {
+      return 'Password must be at least 8 characters!';
+    }
+
+    if (this.password?.errors?.['passwordMismatch']) {
+      return 'Passwords do not match!';
+    }
+
+    return '';
+  }
+
+  onSubmit(): void {
+    if (this.registerForm.valid) {
+      const { username, email, phone } = this.registerForm.value;
+      const { password, rePassword } = this.registerForm.value.passwords;
+
+      console.log(username);
+
+      this.authService.register(
+        username,
+        email,
+        phone,
+        password,
+        rePassword).subscribe({
+          next: () => {
+            this.router.navigate(['/home']);
+          },
+          error: (err) => {
+            console.log('Registration failed', err)
+            this.markFormGroupTouched();
+          }
+        })
+    }
+  }
+
+  private markFormGroupTouched(): void {
+    Object.keys(this.registerForm.controls).forEach(key => {
+      const control = this.registerForm.get(key);
+      if (control instanceof FormGroup) {
+        Object.keys(control.controls).forEach(nestedKey => {
+          const nestedControl = control.get(nestedKey)
+          nestedControl?.markAllAsTouched();
+        })
+      } else {
+        control?.markAsTouched();
+      }
+    })
+  }
+
+  private passwordMatchValidator(passwordsControl: AbstractControl): ValidationErrors | null {
+    const password = passwordsControl.get('password');
+    const rePassword = passwordsControl.get('rePassword');
+
+    if (password && rePassword && password.value !== rePassword.value) {
+      return { passwordMismatch: true };
+    }
+
+    return null;
   }
 }
