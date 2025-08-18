@@ -9,5 +9,13 @@ import { Book } from "../../../models/book.model";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookItem {
-  book!: Book;
+  book: Book = {
+    id: 'jskddier3492laks',
+    title: 'Book Title',
+    author: 'Book Author',
+    year: 2018,
+    pages: 240,
+    likes: 40,
+    dislikes: 5
+  };
 }
