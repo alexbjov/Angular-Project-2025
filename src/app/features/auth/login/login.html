@@ -1,0 +1,36 @@
+<p>Login Form here</p>
+<form class="login">
+  <fieldset>
+    <h2>Login Form</h2>
+
+    <p>
+      <label for="email"><span>Email:</span></label>
+      <input type="email" name="email" id="email" placeholder="john@gmail.com"
+          [(ngModel)]="email" (blur)="validateEmail()">
+    </p>
+    @if (emailError) {
+    <p class="error">
+      {{ emailErrorMessage }}
+    </p>
+    }
+
+    <p>
+      <label for="password"><span>Password:</span></label>
+      <input type="password" name="password" id="password"
+          placeholder="********" [(ngModel)]="password"
+          (blur)="validatePassword()">
+    </p>
+    @if (passwordError) {
+    <p class="error">
+      {{ passwordErrorMessage }}
+    </p>
+    }
+
+    <button [disabled]="!isFormValid()">Login</button>
+
+    <p>
+      Don't have an account?
+      <a routerLink="/register">Register</a>
+    </p>
+  </fieldset>
+</form>
