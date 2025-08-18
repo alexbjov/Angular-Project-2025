@@ -1,0 +1,26 @@
+<p>Home component here</p>
+<div class="welcome">
+  <h3>Welcome!</h3>
+  <p>Fan Books Club</p>
+
+  @if (!isLoggedIn()) {
+  <div class="logged">
+    <ul>
+      <li>
+        <a routerLink="/login">
+          Login
+        </a>
+      </li>
+      <li>
+        <a routerLink="/register">
+          Register
+        </a>
+      </li>
+    </ul>
+  </div>
+  } @else {
+  <div class="logged">
+    <p>Welcome back, {{ currentUser()?.username }}!</p>
+  </div>
+  }
+</div>
