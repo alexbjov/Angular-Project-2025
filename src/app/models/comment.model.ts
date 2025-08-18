@@ -1,9 +1,10 @@
 export interface Comment {
-  id: number,
+  id: string,
   author: string,
   title: string,
   description: string,
   likes: number,
   dislikes: number,
-  bookId: number;
+  bookId: string,
+  ownerId: string
 }
