@@ -1,4 +1,8 @@
 import {
+  XhrFactory,
+  parseCookieValue
+} from "./chunk-DBQVMHQU.js";
+import {
   APP_BOOTSTRAP_LISTENER,
   ApplicationRef,
   DOCUMENT,
@@ -40,24 +44,9 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-EPT7NTAZ.js";
+} from "./chunk-32VBBTPZ.js";
 
-// ../../node_modules/@angular/common/fesm2022/xhr.mjs
-function parseCookieValue(cookieStr, name) {
-  name = encodeURIComponent(name);
-  for (const cookie of cookieStr.split(";")) {
-    const eqIndex = cookie.indexOf("=");
-    const [cookieName, cookieValue] = eqIndex == -1 ? [cookie, ""] : [cookie.slice(0, eqIndex), cookie.slice(eqIndex + 1)];
-    if (cookieName.trim() === name) {
-      return decodeURIComponent(cookieValue);
-    }
-  }
-  return null;
-}
-var XhrFactory = class {
-};
-
-// ../../node_modules/@angular/common/fesm2022/module.mjs
+// node_modules/@angular/common/fesm2022/module.mjs
 var HttpHandler = class {
 };
 var HttpBackend = class {
@@ -2414,7 +2403,7 @@ var HttpClientJsonpModule = class _HttpClientJsonpModule {
   }], null, null);
 })();
 
-// ../../node_modules/@angular/common/fesm2022/http.mjs
+// node_modules/@angular/common/fesm2022/http.mjs
 var httpResource = (() => {
   const jsonFn = makeHttpResourceFn("json");
   jsonFn.arrayBuffer = makeHttpResourceFn("arraybuffer");
@@ -2682,8 +2671,6 @@ function appendMissingHeadersDetection(url, headers, headersToInclude) {
 }
 
 export {
-  parseCookieValue,
-  XhrFactory,
   HttpHandler,
   HttpBackend,
   HttpHeaders,
@@ -2726,7 +2713,6 @@ export {
 };
 /*! Bundled license information:
 
-@angular/common/fesm2022/xhr.mjs:
 @angular/common/fesm2022/module.mjs:
 @angular/common/fesm2022/http.mjs:
   (**
@@ -2735,4 +2721,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-MHKKOIZK.js.map
+//# sourceMappingURL=chunk-5OYIHWS2.js.map
