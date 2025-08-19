@@ -1,21 +1,31 @@
 <h1>Fan Books Club</h1>
-
-<ul class="nav nav-pills">
+@if (!isLogged) {
+<p>Welcome Guest!</p>
+} @else {
+<p>Welcome {{currentUser?.email}}!</p>
+}
+<ul>
   <li class="nav-item">
     <a class="nav-link" href="/about">About</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/contact">Contact</a>
   </li>
+  @if (!isLogged) {
   <li class="nav-item">
     <a class="nav-link" href="/login">Login</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/register">Register</a>
   </li>
+  } @else {
+  <li class="nav-item">
+    <a class="nav-link" href="/logout">Logout</a>
+  </li>
+  }
 </ul>
 
-<ul class="nav nav-pills">
+<ul>
   <li class="nav-item">
     <a class="nav-link" href="/books">Books</a>
   </li>

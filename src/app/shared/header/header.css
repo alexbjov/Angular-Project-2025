@@ -1,16 +1,17 @@
-ul, h1 {
+ul, h1, p {
   background-color: rgb(159, 144, 199);
+  color: white;
   display: block;
   text-align: center;
   padding: 0.5em 0.5em;
 }
 
-ul {
+li {
   list-style-type: none;
 }
 
 li {
-  background-color: rgb(42, 70, 79);
+  background-color: rgb(111, 141, 151);
   text-decoration: none;
   color: azure;
   margin: 0.5em 1em;
@@ -19,5 +20,9 @@ li {
 
 li:hover {
   background-color: aliceblue;
-  color: blueviolet;
+  color: black;
+}
+
+a.nav-link {
+  text-decoration: none;
 }
