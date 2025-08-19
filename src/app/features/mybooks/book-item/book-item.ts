@@ -15,7 +15,10 @@ export class BookItem {
     author: 'Book Author',
     year: 2018,
     pages: 240,
-    likes: 40,
-    dislikes: 5
+    likes: ["alex@gmail.com"],
+    dislikes: ["john@yahoo.com"],
+    description: "Book description",
+    genre: "comedy",
+    owner: "John"
   };
 }
