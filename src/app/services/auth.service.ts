@@ -1,37 +1,17 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal } from '@angular/core';
 import { map, Observable, tap } from "rxjs";
-import { ApiUser } from "../models/apiUser";
+import { ApiUser } from "../models/apiUser.model";
 import { User } from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'http://localhost:3030/users';
 
   private _isLoggedIn = signal<boolean>(false);
   private _currentUser = signal<User | null>(null);
-  // private _users: User[] = [
-  //   {
-  //     id: '5fa6sgju4gj28ff371d',
-  //     username: 'John',
-  //     email: 'john@gmail.com',
-  //     phone: '+359 235 638 848'
-  //   },
-  //   {
-  //     id: '5faggkisdr57f371e',
-  //     username: 'Jane',
-  //     email: 'jane@gmail.com',
-  //     phone: '+359 355 826 884'
-  //   },
-  //   {
-  //     id: '5fa693756jfksl371f',
-  //     username: 'David',
-  //     email: 'david@gmail.com',
-  //     phone: '+359 287 734 523'
-  //   }
-  // ]
 
   public isLoggedIn = this._isLoggedIn.asReadonly();
   public currentUser = this._currentUser.asReadonly();
@@ -50,15 +30,13 @@ export class AuthService {
     return <User>{
       id: apiUser._id,
       username: apiUser.username,
+      token: apiUser.accessToken,
       email: apiUser.email,
-      phone: apiUser.tel
     };
   }
 
   login(email: string, password: string): Observable<User> {
-    return this.http.post<ApiUser>(`${this.apiUrl}/login`, { email, password }, {
-      withCredentials: true
-    }).pipe(
+    return this.http.post<ApiUser>(`${this.apiUrl}/login`, { email, password }).pipe(
       map(apiUser => this.mapApiUserToUser(apiUser)),
       tap(user => {
         this._currentUser.set(user);
@@ -77,7 +55,7 @@ export class AuthService {
     return this.http.post<ApiUser>(`${this.apiUrl}/register`, {
       username,
       email,
-      tel: phone,
+      // phone,
       password,
       rePassword
     }).pipe(
@@ -107,9 +85,9 @@ export class AuthService {
   update(user: User): Observable<User> {
     return this.http.put<ApiUser>(`${this.apiUrl}/users/${user.id}`, {
       _id: user.id,
-      username: user.username,
+      accessToken: user.token,
       email: user.email,
-      tel: user.phone
+      username: user.username
     }).pipe(
       map(apiUser => this.mapApiUserToUser(apiUser)),
       tap(user => {
