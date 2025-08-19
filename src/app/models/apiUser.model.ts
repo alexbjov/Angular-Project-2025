@@ -1,6 +1,6 @@
 export interface ApiUser {
   _id: string;
-  tel: string;
+  username: string;
   email: string;
-  username: string
+  accessToken: string
 }
