@@ -1,15 +1,13 @@
-import { Component, inject } from '@angular/core';
-import { RouterLink } from "@angular/router";
-import { AuthService } from "../../services/auth.service";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
 export class Home {
-  private authService = inject(AuthService);
-  readonly isLoggedIn = this.authService.isLoggedIn;
-  readonly currentUser = this.authService.currentUser;
+  // private authService = inject(AuthService);
+  // readonly isLoggedIn = this.authService.isLoggedIn;
+  // readonly currentUser = this.authService.currentUser;
 }
