@@ -6,10 +6,10 @@
     <p>
       <label for="email"><span>Email:</span></label>
       <input [class.input-error]="isEmailValid" type="email" id="email"
-          placeholder="john.doe@gmail.com" formControlName="email">
+          placeholder="john@gmail.com" formControlName="email">
     </p>
     @if (isEmailValid) {
-    <p class="error">
+    <p class="input-error">
       {{ emailErrorMessage }}
     </p>
     }
@@ -20,12 +20,12 @@
           placeholder="********" formControlName="password">
     </p>
     @if (isPasswordValid) {
-    <p class="error">
+    <p class="input-error">
       {{ passwordErrorMessage }}
     </p>
     }
 
-    <button [disabled]="loginForm.invalid">Login</button>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
 
     <p class="text-center">
       Don't have an account?
