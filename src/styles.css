@@ -5,7 +5,9 @@
 }
 
 body {
+  position: relative;
   font: 14px/1.2 Verdana, sans-serif;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,8 +15,13 @@ body {
   flex-wrap: wrap;
   gap: 2em;
   min-height: 100vh;
+  background-image: url('../public/background-image.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
 }
 
 body > * {
-  flex: 1 0 400px;
+  flex: 1 0 100vh;
 }
