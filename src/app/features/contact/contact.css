@@ -1,0 +1,11 @@
+div.container {
+  background-color: aquamarine;
+  color: black;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+}
+
+div p {
+  text-align: center;
+}
