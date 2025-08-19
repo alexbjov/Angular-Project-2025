@@ -1,0 +1,10 @@
+.about {
+  background-color: rgb(32, 100, 139);
+  width: 70%;
+  margin: 10px auto;
+}
+
+.about > * {
+  margin: 10px auto;
+  color: aliceblue;
+}
