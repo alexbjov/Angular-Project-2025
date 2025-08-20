@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal } from '@angular/core';
+import { Router } from "@angular/router";
 import { map, Observable, tap } from "rxjs";
 import { ApiUser } from "../models/apiUser.model";
 import { User } from "../models/user.model";
@@ -16,6 +17,7 @@ export class AuthService {
   public isLoggedIn = this._isLoggedIn.asReadonly();
   public currentUser = this._currentUser.asReadonly();
   private http = inject(HttpClient);
+  private router = inject(Router);
 
   constructor() {
     const savedUser = localStorage.getItem('currentUser');
@@ -49,18 +51,17 @@ export class AuthService {
   register(
     username: string,
     email: string,
-    phone: string,
     password: string,
     rePassword: string): Observable<User> {
     return this.http.post<ApiUser>(`${this.apiUrl}/register`, {
       username,
       email,
-      // phone,
       password,
       rePassword
     }).pipe(
       map(apiUser => this.mapApiUserToUser(apiUser)),
       tap(user => {
+        console.log("User:", user);
         this._currentUser.set(user);
         this._isLoggedIn.set(true);
         localStorage.setItem('currentUser', JSON.stringify(user));
@@ -69,11 +70,12 @@ export class AuthService {
   }
 
   logout(): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/logout`, {}).pipe(
+    return this.http.get<void>(`${this.apiUrl}/logout`).pipe(
       tap(() => {
         this._currentUser.set(null);
         this._isLoggedIn.set(false);
         localStorage.removeItem('currentUser');
+        this.router.navigate(['/home']);
       })
     );
   }
@@ -97,7 +99,7 @@ export class AuthService {
     );
   }
 
-  getToken(): string {
-    return "TOKEN=jdk246";
-  }
+  // getToken(): string {
+  //   return this._currentUser()?.get('token');
+  // }
 }
