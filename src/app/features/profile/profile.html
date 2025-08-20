@@ -1,0 +1,46 @@
+<div class="profile">
+  <p>Profile</p>
+  <p class="image">
+  </p>
+  <h3>User Info:</h3>
+
+  @if(!isEditMode) {
+  <div class="current-state">
+    <p>Username: </p>
+    <p>{{ currentUser()?.username || 'N/A' }}</p>
+  </div>
+  <div class="current-state">
+    <p>Email: </p>
+    <p>{{ currentUser()?.email }}</p>
+  </div>
+  <button class="edit-button" (click)="onEdit()">Edit</button>
+  } @else {
+  <form [formGroup]="profileForm" (ngSubmit)="onSave()" class="profile-form">
+    <div class="username-container">
+      <label for="username">Username:</label>
+      <input [class.input-error]="isUsernameValid" type="text" id="username"
+          formControlName="username">
+      @if (isUsernameValid) {
+      <p class="error">{{ usernameErrorMessage }}
+      <p>
+        }
+    </div>
+    <div class="email-container">
+      <label for="email">Email:</label>
+      <input [class.input-error]="isEmailValid" type="email" id="email"
+          formControlName="email">
+      @if (isEmailValid) {
+      <p class="input-error">
+        {{ emailErrorMessage }}
+      <p>
+        }
+    </div>
+
+    <div class="button-container">
+      <button (click)="onCancel()" type="button" class="red-btn">Cancel</button>
+      <button [disabled]="profileForm.invalid" type="submit"
+          class="green-btn">Save</button>
+    </div>
+  </form>
+  }
+</div>
