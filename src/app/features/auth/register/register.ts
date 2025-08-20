@@ -18,11 +18,10 @@ export class Register implements AfterViewInit {
 
   constructor() {
     this.registerForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(6)]],
-      email: ['', [Validators.required, Validators.pattern(/^.{8,}$/), Validators.pattern(/[a-zA-Z][a-zA-Z0-9._-]*[a-zA-Z]@[a-z]{2,}\.[a-z]{2,}$/)]],
-      phone: [''],
+      username: ['', [Validators.required, Validators.minLength(5)]],
+      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z][a-zA-Z0-9._-]{2,}[a-zA-z]@[a-z]{2,}\.[a-z]{2,}/)]],
       passwords: this.formBuilder.group({
-        password: ['', [Validators.required, Validators.minLength(6), Validators.pattern(/^[a-zA-Z0-9]+$/)]],
+        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^[a-zA-Z0-9]+$/)]],
         rePassword: ['', Validators.required]
       }, { validators: this.passwordMatchValidator })
     })
@@ -38,10 +37,6 @@ export class Register implements AfterViewInit {
 
   get email(): AbstractControl<any, any> | null {
     return this.registerForm.get('email');
-  }
-
-  get phone(): AbstractControl<any, any> | null {
-    return this.registerForm.get('phone');
   }
 
   get passwords(): FormGroup<any> {
@@ -74,7 +69,7 @@ export class Register implements AfterViewInit {
     }
 
     if (this.username?.errors?.['minlength']) {
-      return 'Username should have at least 6 characters!';
+      return 'Username should have at least 5 characters!';
     }
 
     return '';
@@ -130,7 +125,7 @@ export class Register implements AfterViewInit {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-      const { username, email, phone } = this.registerForm.value;
+      const { username, email } = this.registerForm.value;
       const { password, rePassword } = this.registerForm.value.passwords;
 
       console.log(username);
@@ -138,7 +133,6 @@ export class Register implements AfterViewInit {
       this.authService.register(
         username,
         email,
-        phone,
         password,
         rePassword).subscribe({
           next: () => {

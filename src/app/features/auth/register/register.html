@@ -3,68 +3,62 @@
     <h2>Registration Form</h2>
 
     <!-- username -->
-    <p class="field field-icon">
+    <p class="username">
       <label for="username"><span>Username:</span></label>
       <input [class.input-error]="isUsernameValid" type="text" id="username"
           placeholder="Johny" formControlName="username">
     </p>
     @if (isUsernameValid) {
-    <p class="error">
+    <p class="input-error">
       {{ usernameErrorMessage }}
     </p>
     }
 
     <!-- email -->
-    <p>
+    <p class="email">
       <label for="email"><span>Email:</span></label>
       <input [class.input-error]="isEmailValid" type="email" id="email"
           placeholder="john@gmail.com" formControlName="email">
     </p>
     @if (isEmailValid) {
-    <p class="error">
+    <p class="input-error">
       {{ emailErrorMessage }}
     </p>
     }
 
-    <!-- telephone -->
-    <p class="field field-icon">
-      <label for="tel"><span>Phone:</span></label>
-      <select name="select-tel" id="select-tel" class="tel">
-        <option value="00359">+359</option>
-      </select>
-      <input type="text" id="tel" placeholder="885 888 888"
-          formControlName="phone">
-    </p>
-
     <div formGroupName="passwords">
       <!-- password -->
-      <p class="field field-icon">
+      <p class="pass">
         <label for="password"><span>Password</span></label>
         <input [class.input-error]="isPasswordsValid" type="password"
             id="password" placeholder="********" formControlName="password">
       </p>
       @if (isPasswordsValid) {
-      <p class="error">
+      <p class="input-error">
         {{ passwordErrorMessage }}
       </p>
       }
 
       <!-- rePassword -->
-      <p class="field field-icon">
+      <p class="pass">
         <label for="rePassword"><span>RePassword:</span></label>
         <input [class.input-error]="isPasswordsValid" type="password"
             id="rePassword" placeholder="********" formControlName="rePassword">
       </p>
       @if (isPasswordsValid) {
-      <p class="error">
+      <p class="input-error">
         {{ rePasswordErrorMessage }}
       </p>
       }
     </div>
 
-    <button [disabled]="registerForm.invalid">Create Account</button>
+    <div class="action">
+      <button type="submit" [disabled]="registerForm.invalid">
+        Create Account
+      </button>
+    </div>
 
-    <p class="text-center">
+    <p class="login">
       Have an account?
       <a routerLink="/login">Log In</a>
     </p>
