@@ -1,0 +1,81 @@
+<div class="form-container">
+
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input id="title" type="text" formControlName="title">
+      @if (isTitleInvalid) {
+      <div class="error-message">
+        <p>{{titleErrorMessage}}</p>
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="author">Author:</label>
+      <input id="author" type="text" formControlName="author">
+      @if (isAuthorInvalid) {
+      <div class="error-message">
+        <p>{{authorErrorMessage}}</p>
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">Image URL:</label>
+      <input id="imageUrl" type="url" formControlName="imageUrl">
+      @if (isImageUrlInvalid) {
+      <div class="error-message">
+        <p>{{imageUrlErrorMessage}}</p>
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="year">Publication Year:</label>
+      <input id="year" type="number" formControlName="year">
+      @if (isYearInvalid) {
+      <div class="error-message">
+        <p>{{yearErrorMessage}}</p>
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="pages">Number of Pages:</label>
+      <input id="pages" type="number" formControlName="pages">
+      @if (isPagesNumInvalid) {
+      <div class="error-message">
+        <p>{{pagesErrorMessage}}</p>
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="genre">Genre:</label>
+      <input id="genre" type="text" formControlName="genre">
+      @if (isGenreInvalid) {
+      <div class="error-message">
+        <p>{{genreErrorMessage}}</p>
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description"></textarea>
+      @if (isDescriptionInvalid) {
+      <div class="error-message">
+        <p>{{descriptionErrorMessage}}</p>
+      </div>
+      }
+    </div>
+
+    <div class="btn">
+      <button type="submit" [disabled]="bookForm.invalid">
+        Submit Book
+      </button>
+    </div>
+  </form>
+</div>

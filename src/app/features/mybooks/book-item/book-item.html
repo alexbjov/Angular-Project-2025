@@ -1,7 +1,18 @@
-<p>Book-item here</p>
-<div>
-  <a href="#">
-    <h3>{{book.title}}</h3>
-    <p>{{book.author}}</p>
-  </a>
+<div class="book-container">
+  <div class="book-title">
+    <a routerLink="`/books/${book._id}`">
+      <h2>{{book.title}} </h2>
+    </a>
+    <div>
+      <p>Date: <time>{{book._createdOn}}</time></p>
+      <div class="author">
+        <p>Author: <span>{{book.author}}</span></p>
+      </div>
+    </div>
+    <button class="details" routerLink="`/books/${book._id}`">Details</button>
+
+    @if (isLoggedIn && book._ownerId === currentUserId) {
+    <button class="delete-book">Delete</button>
+    }
+  </div>
 </div>

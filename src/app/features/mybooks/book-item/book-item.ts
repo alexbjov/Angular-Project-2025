@@ -1,24 +1,33 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Book } from "../../../models/book.model";
+import { CommonModule } from "@angular/common";
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
+import { Router, RouterLink } from "@angular/router";
+import { ApiBook } from "../../../models/apiBook.model";
+import { AuthService } from "../../../services/auth.service";
+import { BooksService } from "../../../services/books.service";
 
 @Component({
   selector: 'app-book-item',
-  imports: [],
+  imports: [CommonModule, RouterLink],
   templateUrl: './book-item.html',
   styleUrl: './book-item.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookItem {
-  book: Book = {
-    id: 'jskddier3492laks',
-    title: 'Book Title',
-    author: 'Book Author',
-    year: 2018,
-    pages: 240,
-    likes: ["alex@gmail.com"],
-    dislikes: ["john@yahoo.com"],
-    description: "Book description",
-    genre: "comedy",
-    owner: "John"
-  };
+  @Input() book!: ApiBook;
+  private authService = inject(AuthService);
+  private booksService = inject(BooksService);
+  private router = inject(Router);
+
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  get currentUserId(): string | null {
+    return this.authService.getCurrentUserId();
+  }
+
+  //   deleteBook(bookId: string) {
+  //     this.booksService.deleteBook(bookId);
+  //   }
+  // }
 }

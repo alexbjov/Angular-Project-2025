@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Book } from '../../../models/book.model';
+import { ApiBook } from "../../../models/apiBook.model";
+import { AuthService } from "../../../services/auth.service";
 import { BooksService } from "../../../services/books.service";
 import { BookItem } from '../book-item/book-item';
 
@@ -12,10 +13,12 @@ import { BookItem } from '../book-item/book-item';
   styleUrl: './books-board.css'
 })
 export class BooksBoard {
-  books: Book[] = [];
-  books$!: Observable<Book[]>;
+  private authService = inject(AuthService);
+  readonly isLogged = this.authService.isLoggedIn;
+  books$!: Observable<ApiBook[]>;
 
   constructor(private booksService: BooksService) {
-    this.books$ = this.booksService.getBooks();
+    this.books$ = this.booksService.books$;
+    this.booksService.getBooks().subscribe();
   }
 }

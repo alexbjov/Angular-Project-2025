@@ -1,2 +1,7 @@
-<p>Books-board here</p>
-<app-book-item></app-book-item>
+<div class="container">
+  <div class="book-titles">
+    @for (book of books$ | async; track book.imageUrl) {
+    <app-book-item [book]="book"></app-book-item>
+    }
+  </div>
+</div>

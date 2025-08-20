@@ -1,0 +1,47 @@
+.form-container {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+}
+
+form {
+  width: 100%;
+  margin: 2px auto;
+}
+
+.form-group {
+  display: block;
+  background-color: blue;
+  color: white;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+
+  label, input {
+    display: block;
+    padding: 2px 5px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.error-message {
+  color: red;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  background-color: blue;
+  padding: 2px 5px;
+  width: 80%;
+  margin: auto;
+
+  button {
+    background-color: green;
+    color: white;
+    padding: 2px 5px;
+  }
+}
