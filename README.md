@@ -1,61 +1,124 @@
-# FanBooksClub
+# Books Club Project Documentation
 
-Angular Project 2025
+## Project Overview
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
+Welcome to the Fan Books Club - Rome project! This is a single-page application (SPA) built with Angular 20 that allows users to register, log in, log out or browse a collection of books and add new books to the library. The application uses the Soft practice server as its backend.
 
-## Development server
+## 🚀 Getting Started
 
-To start a local development server, run:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+Prerequisites
+You'll need the following installed on your machine:
+
+Node.js (LTS version is recommended)
+
+npm (Node Package Manager, which comes with Node.js)
+
+Angular CLI (globally installed)
+
+npm install -g @angular/cli
+
+SoftUni Practice Server
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone fan-books-club
+```
+
+Navigate into the project directory:
+
+```bash
+cd ./fan-books-club
+```
+
+## Install the dependencies
+
+```bash
+npm install
+```
+
+Add the data from the input-data folder into the seedData variable in the server.js from the SoftUni under the key "books".
+
+## Running the Application
+
+To run the development server, use the following command. The application will be accessible at `http://localhost:4200/`.
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 📂 Project Structure
 
-## Code scaffolding
+This project follows a standard Angular folder structure. Key directories and files include:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+src/app/: Contains the main application logic.
 
-```bash
-ng generate component component-name
-```
+~app/guards: Guards for application-wide functionality.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+~app/interceptors: Interceptors for application-wide functionality.
 
-```bash
-ng generate --help
-```
+~app/models: Models for necessary objects.
 
-## Building
+~app/services: Services for authentication and books.
 
-To build the project run:
+shared/: Reusable components header, footer, not found components.
 
-```bash
-ng build
-```
+features/: Feature modules and forms for auth for login/register, books for displaying books and user profile.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+auth/: Handles user authentication, including login and registration components.
 
-## Running unit tests
+mybooks/: Manages book-related functionality, such as viewing and adding books.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 🔑 Features and Functionality
 
-```bash
-ng test
-```
+### User Authentication
 
-## Running end-to-end tests
+Register: New users can create an account using a reactive form.
 
-For end-to-end (e2e) testing, run:
+Login: Existing users can log in to access authenticated routes.
 
-```bash
-ng e2e
-```
+Logout: Users can securely log out of their session.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Authentication Guard: Protects routes that require a user to be logged in.
 
-## Additional Resources
+### Books Management
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+View Books: Users can browse a list of all available books.
+
+Add New Book: Logged-in users can add a new book to the database using a reactive form.
+
+### Shared Components
+
+Header and Footer: Consistent navigation through the app.
+
+Error Handling: A system for displaying user-friendly error messages in the reactive forms.
+
+### 🤝 Backend Integration
+
+This project is built to work with the SoftUni practice server API. The API endpoints used are:
+
+`http://localhost:3030/users/login`
+
+`http://localhost:3030/users/register`
+
+`http://localhost:3030/users/logout`
+
+`http://localhost:3030/data/books` (for fetching all books)
+
+`http://localhost:3030/data/books` (for adding a new book)
+
+`http://localhost:3030/data/books\:id` (for editing a book)
+
+## 🛠️ Technologies Used
+
+Frontend: Angular 20
+
+Reactive Forms: For form handling and validation.
+
+Plain HTML & CSS
+
+Backend: SoftUni Practice Server
