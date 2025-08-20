@@ -1,10 +1,13 @@
 .about {
+  display: block;
   background-color: rgb(32, 100, 139);
-  width: 70%;
+  width: 80%;
   margin: 10px auto;
+  padding: 10px;
 }
 
 .about > * {
-  margin: 10px auto;
+  display: block;
+  padding: 5px;
   color: aliceblue;
 }
