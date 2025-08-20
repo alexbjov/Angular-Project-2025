@@ -1,5 +1,6 @@
 export interface ApiBook {
   _id: string,
+  imageUrl: string,
   title: string,
   author: string, // author of a book
   year: number, // publish year
@@ -8,5 +9,6 @@ export interface ApiBook {
   genre: string,
   _ownerId: string,
   likes: string[], // users who liked the book
-  dislikes: string[]; // users who disliked the book
+  dislikes: string[], // users who disliked the book
+  _createdOn: number
 }
