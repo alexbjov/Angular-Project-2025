@@ -1,1 +1,23 @@
-<h3>Home Component</h3>
+<div class="welcome-screen">
+  <h3>Welcome to our Fan Books Club - Rome</h3>
+  @if (!isLoggedIn()) {
+  <div class="not-logged">
+    <ul>
+      <li>
+        <a class="links" routerLink="/login">
+          Login
+        </a>
+      </li>
+      <li>
+        <a class="links" routerLink="/register">
+          Register
+        </a>
+      </li>
+    </ul>
+  </div>
+  } @else {
+  <div class="logged">
+    <p>Welcome, {{ currentUser()?.username }}!</p>
+  </div>
+  }
+</div>

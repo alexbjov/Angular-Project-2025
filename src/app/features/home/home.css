@@ -1,0 +1,28 @@
+.welcome-screen {
+  background-color: blanchedalmond;
+  color: black;
+  padding: 5px;
+  text-align: center;
+}
+
+.logged {
+  color: black;
+}
+
+.not-logged {
+  background-color: red;
+  color: white;
+}
+li {
+  list-style-type: none;
+  display: inline-block;
+  margin: 5px 10px;
+}
+
+a.links {
+  display: inline;
+  padding: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+}
