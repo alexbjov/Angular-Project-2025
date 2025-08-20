@@ -1,0 +1,110 @@
+{
+  "books": {
+    "sdjkrele73829jd": {
+      "_id": "sdjkrele73829jd",
+      "imageUrl": "wuthering-heights.jpg",
+      "title": "Wuthering Heights",
+      "author": "Emily Bronte",
+      "description": "Wuthering Heights is a gothic novel about a severely toxic relationship between Catherine and Heathcliff. Heathcliff came from unknown circumstances and was abused and ostracized by nearly everyone. Heathcliff and Cathy loved each other deeply, but could not be together.",
+      "year": 1847,
+      "pages": 240,
+      "genre": "Gothic novel",
+      "_ownerId": "ebef1daf2be1c8454c466bc26f56e824",
+      "likes": [
+        "ebef1daf2be1c8454c466bc26f56e8243782",
+        "ebef1daf2384j6f56e8243782",
+        "ebef1ddjrkiwols83e8243782"
+      ],
+      "dislikes": [
+        "djrkiwols83e8243",
+        "dfjrk82wols83e8243"
+      ],
+      "_createdOn": 1755647422042
+    },
+    "oepfjr728911jkncj": {
+      "_id": "oepfjr728911jkncj",
+      "imageUrl": "lord-of-the-flies.jpg",
+      "title": "Lord of the Flies",
+      "author": "Wiliam Golding",
+      "description": "Lord of the Flies is the 1954 debut novel of     British author William Golding. The plot concerns a group of     prepubescent British boys who are stranded on an uninhabited     island and their disastrous attempts to govern themselves that led to a descent into savagery.",
+      "year": 1954,
+      "pages": 150,
+      "genre": "Novel",
+      "_ownerId": "ebef1daf2be1c8454c466bc26f56e824",
+      "likes": [
+        "ebef1daf3drgh66bc26f56e824",
+        "ebef1da345ygc26f56e824",
+        "ebef1dafdfgrdsbc26f56e82434f"
+      ],
+      "dislikes": [
+        "fgtgebef1daf2be16e824",
+        "ebef1daf2bfrghf56e824"
+      ],
+      "_createdOn": 1755646422042
+    }
+  },
+  "dhrjkgiorl379302j": {
+    "_id": "dhrjkgiorl379302j",
+    "imageUrl": "pride-and-prejudice.jpg",
+    "title": "Pride and prejudice",
+    "author": "Jane Austen",
+    "description": "Pride and Prejudice follows the turbulent relationship between Elizabeth Bennet, the daughter of a country gentleman, and Fitzwilliam Darcy, a rich aristocratic landowner. They must overcome the titular sins of pride and prejudice in order to fall in love and marry.",
+    "year": 1813,
+    "pages": 180,
+    "genre": "Novel",
+    "_ownerId": "ebef1daf2be1c8454c466bc26f56e824",
+    "likes": [
+      "aftg3drgh66bc26f56e824",
+      "grdfds5ygc26f56e824",
+      "rtyhc26f56e82434f"
+    ],
+    "dislikes": [
+      "dftbe16e824"
+    ],
+    "_createdOn": 1755644292042
+  },
+  "fjrildoej72849djeo": {
+    "_id": "fjrildoej72849djeo",
+    "imageUrl": "animal-farm.jpg",
+    "title": "Animal farm",
+    "author": "George Orwell",
+    "description": "One of Orwell's finest works, it is a political fable based on the events of Russia's Bolshevik revolution and the betrayal of the cause by Joseph Stalin. The book concerns a group of barnyard animals who overthrow and chase off their exploitative human masters and set up an egalitarian society of their own.",
+    "year": 1945,
+    "pages": 144,
+    "genre": "Satirical Novel",
+    "_ownerId": "ebef1daf2be1c8454c466bc26f56e824",
+    "likes": [
+      "fjroflwp6e824",
+      "fkrutfhsk8364",
+      "fkridpmw729fjeikshdy",
+      "djggitle83645kdf"
+    ],
+    "dislikes": [
+      "dftbe16e824",
+      "djrueodk72946"
+    ],
+    "_createdOn": 1755646422028
+  },
+  "kfjdoe836f90jd": {
+    "_id": "kfjdoe836f90jd",
+    "imageUrl": "the-picture-of-dorian-gray.jpg",
+    "title": "The picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "description": "The Picture of Dorian Gray is the story of a beautiful young man who unknowingly makes a Faustian bargain to remain eternally youthful. Seems like a good idea. Spoiler alert: it isn't. Like all deals with the devil, the cost is his soul, and the price turns out to be too high",
+    "year": 1890,
+    "pages": 120,
+    "genre": "Gothic Fiction",
+    "_ownerId": "ebef1daf2be1c8454c466bc26f56e824",
+    "likes": [
+      "fjroflwp6dsdfe824",
+      "sdfewr8364hdld",
+      "3749574jdhryk",
+      "djekrifhdk"
+    ],
+    "dislikes": [
+      "dkrjuffjrkfljdh",
+      "eirutnf638292"
+    ],
+    "_createdOn": 17556432422042
+  }
+}
